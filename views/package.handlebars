@@ -1,0 +1,24 @@
+
+{{!-- Name: Sukhbir Singh
+ID -152946182 --}}
+<main>
+    <div class="hero-image" style="background-image: url(meal/Meal2.jpg);">
+        <div id="packageHero">
+            Choose from the meals below.
+
+        </div>
+    </div>
+    <div id="package">
+        {{#each package}}
+        <div>
+            <img src="{{this.url}}" alt="{{this.alt}}">
+            <p id="packCaption"> {{this.caption}}</p>
+            <p id="packDes"> {{this.des}}</p>
+            <p id="packMeal">(Includes {{this.meal}} meals)</p>
+            <p id="packSyn">{{this.Synopsis}}</p>
+            <p id="packPrice">{{this.price}}</p>
+        </div>
+        {{/each}}
+
+    </div>
+</main>

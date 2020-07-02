@@ -1,0 +1,101 @@
+ {{!-- Name: Sukhbir Singh
+ ID -152946182 --}}
+ 
+<main>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1 style="font-size:50px">Food that you will never forget</h1>
+            <h2 style="color: black;">What are you waiting for?</h2>
+            <span>
+                <h2 class="h2">Order now</h2>
+            </span>
+            <a class="button" style="width: 90px;" href="#chef "> Explore </a>
+
+        </div>
+    </div>
+
+    <div id="below_hero"
+        style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+        We offer what others do not.
+        <span style=" cursor: pointer; font-size: 25px; color: rgb(32, 29, 29);">Still have doubts? </span>
+        <p>
+        <h5 style="color:rgb(218, 255, 249); text-decoration: underline;">Try once to get rid of them</h5>
+    </div>
+    </p>
+
+    <h1 class="contentsectionheader">We respect your <span style="color: darkred; font-size: 50px;"> convenience
+        </span> and <span style="color: darkred; font-size: 50px;">budget</span></h1>
+
+    <div id="row">
+        <div id="product">
+            <img src="image/pickup.jpg" alt="card">
+            <p id="des">Pick Up avalaible</p>
+            <p id="data">Pick up avalaible from near by frenchise</p>
+        </div>
+        <div id="product">
+            <img src="image/homedel.jpg" alt="card">
+            <p id="des">Home delivery </p>
+            <p id="data"> Get your hot food deliverd to you at your home</p>
+        </div>
+        <div id="product">
+            <img src="image/freefood.jpg" alt="card">
+            <p id="des">Free first week</p>
+            <p id="data">We offer free food for a week. Isn't it satisfying?</p>
+        </div>
+        <div id="product">
+            <img src="image/card.jpg" alt="card">
+            <p id="des">Cancel any time</p>
+            <p id="data">Unsubscribe any time without any charges</p>
+        </div>
+    </div>
+
+    <div class="topmeal">
+        <div class="mealtext" style="font-size: 45px;">
+            <div class="taste">Taste is there</div>
+            <p id="health_not_compro"> But health is not compromised either!</p>
+        </div>
+    </div>
+
+    <!-- Top meal -->
+    <p>
+
+
+    <div id="chef">Top meal packages!</div>
+    <div id="chef2">Get on exclusive prices!</div>
+
+    <div id="package">
+        {{#each top}}
+        <div>
+            <img src="{{this.url}}" alt="{{this.alt}}">
+            <p id="packCaption"> {{this.caption}}</p>
+            <p id="packDes"> {{this.des}}</p>
+            <p id="packMeal">(Includes {{this.meal}} meals)</p>
+            <p id="packSyn">{{this.Synopsis}}</p>
+            <p id="packPrice">{{this.price}}</p>
+        </div>
+        {{/each}}
+    </div>
+
+    <div id="chef">Our Kitchen is up with these dishes right now!</div>
+    <div id="chef2">You would love to explore our kitchen</div>
+    <div id="row2">
+        {{#each services}}
+        <div>
+            <img src="{{this.url}}" alt="{{this.alt}}">
+            <p> {{this.caption}}</p>
+            <p> {{this.price}}</p>
+        </div>
+        {{/each}}
+    </div>
+
+
+    </p>
+    <!-- Top meal -->
+    <style>
+        #package {
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</main>
