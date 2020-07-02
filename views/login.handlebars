@@ -9,7 +9,7 @@ ID -152946182 --}}
                 <hr>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email">
+                <input type="text" placeholder="Enter Email" name="email" id="email" value={{storedEmail}}>
                 <div id="formError" style="margin-top: 0px;"> 
                     {{#each email}}
                     {{this}}
@@ -18,7 +18,7 @@ ID -152946182 --}}
                         
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" id="psw"
-                    style="margin: 5px 0 2px 0;">
+                    style="margin: 5px 0 2px 0;" value={{storedPass}}>
                 <div id="formError"> 
                     {{#each pass}}
                     {{this}}

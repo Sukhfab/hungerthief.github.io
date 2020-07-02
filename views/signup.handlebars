@@ -8,7 +8,7 @@ ID -152946182 --}}
             <hr>
 
             <label for="fname"><b>First Name</b></label>
-            <input type="text" placeholder="First Name" name="fname" id="fname" >
+            <input type="text" placeholder="First Name" name="fname" id="fname" value={{storedfname}}>
              <div id="formError"> 
                     {{#each fname}}
                     {{this}}
@@ -17,7 +17,7 @@ ID -152946182 --}}
 
 
             <label for="lname"><b>Last Name</b></label>
-            <input type="text" placeholder="Last Name" name="lname" id="lname" >
+            <input type="text" placeholder="Last Name" name="lname" id="lname" value={{storedlname}} >
              <div id="formError"> 
                     {{#each lname}}
                     {{this}}
@@ -26,7 +26,7 @@ ID -152946182 --}}
 
 
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" id="email" >
+            <input type="text" placeholder="Enter Email" name="email" id="email" value={{storedemail}}>
              <div id="formError"> 
                     {{#each email}}
                     {{this}}
@@ -35,7 +35,7 @@ ID -152946182 --}}
 
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" id="psw" >
+            <input type="password" placeholder="Enter Password" name="password" id="psw" value={{storedpass}}>
              <div id="formError"> 
                     {{#each pass}}
                     {{this}}
@@ -44,7 +44,7 @@ ID -152946182 --}}
 
 
             <label for="psw-repeat"><b>Confirm Password</b></label>
-            <input type="password" placeholder="Confirm Password" name="passwordrepeat" id="psw-repeat" >
+            <input type="password" placeholder="Confirm Password" name="passwordrepeat" id="psw-repeat" value={{storedconpass}}>
              <div id="formError"> 
                     {{#each conpass}}
                     {{this}}
