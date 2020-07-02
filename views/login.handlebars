@@ -2,21 +2,34 @@
 ID -152946182 --}}
 <main>
     <div id="formz">
-        <form action="#" style="margin: 30px 350px" ;>
+        <form action="submit-login" style="margin: 30px 350px" method="POST">
             <div class="container" style="border: 3px solid #f1f1f1">
                 <h1>Sign in</h1>
                 <p>Enter your details to sign in.</p>
                 <hr>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
+                <input type="text" placeholder="Enter Email" name="email" id="email">
+                <div id="formError" style="margin-top: 0px;"> 
+                    {{#each email}}
+                    {{this}}
+                    {{/each}}
+                    </div>
+                        
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" id="psw" style="margin: 5px 0 2px 0;"
-                    required>
+                <input type="password" placeholder="Enter Password" name="password" id="psw"
+                    style="margin: 5px 0 2px 0;">
+                <div id="formError"> 
+                    {{#each pass}}
+                    {{this}}
+                    {{/each}}
+                    </div>
+
 
                 <p><a href="#">Forgot Password</a></p>
                 <button type="submit" class="signinupbtn">Sign in</button>
+                <br>
+
             </div>
 
             <div class="container signup">
@@ -24,5 +37,14 @@ ID -152946182 --}}
             </div>
         </form>
     </div>
-
+{{confirmation}}
 </main>
+
+<style>
+    #formError{
+        color: red;
+        margin-bottom: 15px;
+        font-size: smaller;
+        font-family: cursive;
+    }
+</style>

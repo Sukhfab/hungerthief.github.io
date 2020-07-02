@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
-router.get("/login", (req, res) => {
-    const header = ` <header>
+const loginHeader=  ` <header>
 <p class="header">Welcome back!</p>
 <nav class="navbar">
     <ul>
@@ -16,12 +14,40 @@ router.get("/login", (req, res) => {
     </ul>
 
 </nav>
-</header>`
+</header>`;
+
+
+router.get("/login", (req, res) => {
     res.render("login", {
         head:"Login page",
-        header
+        header : loginHeader
     });
 })
 
+router.post("/submit-login",(req,res)=>{
+    err_email=[];
+    err_pass=[];
+    if (req.body.email===""){
+        err_email.push("Please enter the email")
+    }
+    if (req.body.password===""){
+        err_pass.push("Please enter the Password")
+    }
+    if (err_email.length>0 || err_pass.length>0)
+    {
+        res.render("login",{
+            head:"Login page",
+            header : loginHeader,
+            email:err_email,
+            pass:err_pass
+        })
+    }
+    else
+    {
+        res.redirect("/");
+    }
+
+
+    })
 
 module.exports=router;
