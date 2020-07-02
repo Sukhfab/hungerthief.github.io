@@ -50,43 +50,43 @@ router.post("/submit-signup", (req, res) => {
     }
 
     //complex validation one
-    while (!(flag === false)) {
+   
         if (req.body.password === "") {
             err_pass.push("Please enter the Password")
-            flag = false;
+           // flag = false;
 
         } else
         if (req.body.passwordrepeat == "") {
             err_confirm_pass.push("Re-enter you password")
-            flag = false;
+           // flag = false;
         } else
         if (!(req.body.passwordrepeat == req.body.password)) {
             err_confirm_pass.push("Password does not match")
-            flag = false;
+           // flag = false;
         } else if (req.body.passwordrepeat.length < 8) {
             err_confirm_pass.push("Passowrd mush be of atleast 8 characters")
-            flag = false;
+           // flag = false;
       } 
-    //else if (!(req.body.passwordrepeat.match(numbers))) {
-    //         err_confirm_pass.push("Passowrd must have numbers")
-    //         flag = false;
-    //     }
-    //      else if (!(req.body.passwordrepeat.match(Schar))) {
-    //         err_confirm_pass.push("Passowrd must have special characters")
-    //         flag = false;
+     else if (!(req.body.passwordrepeat.match(numbers))) {
+            err_confirm_pass.push("Passowrd must have numbers")
+            //flag = false;
+        }
+         else if (!(req.body.passwordrepeat.match(Schar))) {
+            err_confirm_pass.push("Passowrd must have special characters")
+            //flag = false;
 
-    //     }else  if (!(req.body.passwordrepeat.match(lower))){
-    //         err_confirm_pass.push("Passowrd must have lower case alphabets")
-    //         flag=false; 
+        }else  if (!(req.body.passwordrepeat.match(lower))){
+            err_confirm_pass.push("Passowrd must have lower case alphabets")
+            //flag=false; 
             
-    //     }else  if (!(req.body.passwordrepeat.match(upper))){
-    //         err_confirm_pass.push("Passowrd must have upper case alphabets")
-    //         flag=false; 
+        }else  if (!(req.body.passwordrepeat.match(upper))){
+            err_confirm_pass.push("Passowrd must have upper case alphabets")
+          //  flag=false; 
             
-    //     }
+        }
 
 
-     } 
+     
 
 
     if (err_email.length > 0 || err_pass.length > 0 || err_confirm_pass.length > 0 || err_fname.length > 0 || err_lname.length > 0) {
@@ -100,7 +100,7 @@ router.post("/submit-signup", (req, res) => {
             lname: err_lname
         })
     } else {
-        res.redirect("/signup");
+        res.redirect("/");
     }
 
 })
