@@ -5,7 +5,9 @@
 const express = require("express");
 const app = express();
 var exphbs = require('express-handlebars');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+require('dotenv').config({path : "./key.env"});
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false

@@ -1,6 +1,7 @@
 const express = require("express");
 const e = require("express");
 const router = express.Router();
+
 const signupHeader = ` <header>
 <p class="header">Sign up to join!</p>
 <nav class="navbar">
@@ -90,8 +91,8 @@ router.post("/submit-signup", (req, res) => {
         storeemail = req.body.email;
         storepass = req.body.password;
         storeconpass = req.body.passwordrepeat;
-
         res.render("signup", {
+            
             head: "Sign up page",
             header: signupHeader,
             email: err_email,
@@ -106,7 +107,25 @@ router.post("/submit-signup", (req, res) => {
             storedconpass: storeconpass
         })
     } else {
-        res.redirect("/");
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.MY_API_ID);
+        const msg = {
+            to:  `${req.body.email}`,
+            from: 'ss9112000@gmail.com',
+            subject: 'Registration Confirmation',
+            html: `Hello ${req.body.fname}, <br>
+             This Email is a confirmation that you are successfully registered as a new user in "Hunger Thief" <br>
+             Tasty food on the way <br>
+             Thank You <br>
+             Hunger Thief`,
+        };
+        sgMail.send(msg)
+        .then(()=>{
+            res.redirect("/");
+        })
+        .catch(err=>{
+            console.log(`error is ${err}`);
+        })
     }
 
 })
