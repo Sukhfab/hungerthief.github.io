@@ -44,54 +44,52 @@ router.post("/submit-signup", (req, res) => {
     let storeconpass
 
     if (req.body.email === "") {
-        err_email.push("Please enter the email")
+        err_email.push("Please enter the email.")
     }
     if (req.body.fname === "") {
-        err_fname.push("Please enter the First Name")
+        err_fname.push("Please enter the First Name.")
     }
     if (req.body.lname === "") {
-        err_lname.push("Please enter the Last Name")
+        err_lname.push("Please enter the Last Name.")
     }
 
     //complex validation one
 
     if (req.body.password === "") {
-        err_pass.push("Please enter the Password")
+        err_pass.push("Please enter the Password.")
 
     } else
     if (req.body.passwordrepeat == "") {
-        err_confirm_pass.push("Re-enter you password")
-        // flag = ;
+        err_confirm_pass.push("Re-enter you password.")
     } else
     if (!(req.body.passwordrepeat == req.body.password)) {
-        err_confirm_pass.push("Password does not match")
-        // flag = false;
-    } else if (req.body.passwordrepeat.length < 8) {
-        err_confirm_pass.push("Passowrd mush be of atleast 8 characters")
-        // flag = false;
-    } else if (!(req.body.passwordrepeat.match(numbers))) {
-        err_confirm_pass.push("Passowrd must have numbers")
-        //flag = false;
-    } else if (!(req.body.passwordrepeat.match(Schar))) {
-        err_confirm_pass.push("Passowrd must have special characters")
-        //flag = false;
+        err_confirm_pass.push("Password does not match.")
+    } else
+    if (req.body.passwordrepeat.length < 8) {
+        err_confirm_pass.push("Password mush be of atleast 8 characters.")
+    } else
+    if (!(req.body.passwordrepeat.match(numbers))) {
+        err_confirm_pass.push("Password must have a number.")
+    } else
+    if (!(req.body.passwordrepeat.match(Schar))) {
+        err_confirm_pass.push("Password must have a special character.")
 
-    } else if (!(req.body.passwordrepeat.match(lower))) {
-        err_confirm_pass.push("Passowrd must have lower case alphabets")
-        //flag=false; 
+    } else
+    if (!(req.body.passwordrepeat.match(lower))) {
+        err_confirm_pass.push("Password must have a lower case alphabet.")
 
-    } else if (!(req.body.passwordrepeat.match(upper))) {
-        err_confirm_pass.push("Passowrd must have upper case alphabets")
-        //  flag=false; 
+    } else
+    if (!(req.body.passwordrepeat.match(upper))) {
+        err_confirm_pass.push("Password must have a upper case alphabet.")
 
     }
 
     if (err_email.length > 0 || err_pass.length > 0 || err_confirm_pass.length > 0 || err_fname.length > 0 || err_lname.length > 0) {
-        storefname=req.body.fname;
-        storelname=req.body.lname;
-        storeemail=req.body.email;
-        storepass=req.body.password;
-        storeconpass=req.body.passwordrepeat;
+        storefname = req.body.fname;
+        storelname = req.body.lname;
+        storeemail = req.body.email;
+        storepass = req.body.password;
+        storeconpass = req.body.passwordrepeat;
 
         res.render("signup", {
             head: "Sign up page",
@@ -101,10 +99,10 @@ router.post("/submit-signup", (req, res) => {
             conpass: err_confirm_pass,
             fname: err_fname,
             lname: err_lname,
-            storedfname:storefname,
-            storedlname:storelname,
-            storedemail:storeemail,
-            storedpass:storepass,
+            storedfname: storefname,
+            storedlname: storelname,
+            storedemail: storeemail,
+            storedpass: storepass,
             storedconpass: storeconpass
         })
     } else {

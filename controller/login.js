@@ -30,15 +30,16 @@ router.post("/submit-login",(req,res)=>{
    let storeEmail;
    let storepass;
        if (req.body.email===""){
-        err_email.push("Please enter the email")
+        err_email.push("Please enter the email.")
     }
     if (req.body.password===""){
-        err_pass.push("Please enter the Password")
+        err_pass.push("Please enter the Password.")
     }
     if (err_email.length>0 || err_pass.length>0)
     { 
         storeEmail =req.body.email;
         storepass=req.body.password;
+
         res.render("login",{
             head:"Login page",
             header : loginHeader,
