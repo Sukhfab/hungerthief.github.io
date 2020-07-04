@@ -111,13 +111,13 @@ router.post("/submit-signup", (req, res) => {
         sgMail.setApiKey(process.env.MY_API_ID);
         const msg = {
             to:  `${req.body.email}`,
-            from: 'ss9112000@gmail.com',
+            from: 'hungerthiefforyou@gmail.com',
             subject: 'Registration Confirmation',
             html: `Hello ${req.body.fname}, <br>
              This Email is a confirmation that you are successfully registered as a new user in "Hunger Thief" <br>
-             Tasty food on the way <br>
-             Thank You <br>
-             Hunger Thief`,
+             Tasty food on the way. <br>
+             Thank You, <br>
+             Hunger Thief.`,
         };
         sgMail.send(msg)
         .then(()=>{

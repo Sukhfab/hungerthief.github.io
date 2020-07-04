@@ -19,6 +19,6 @@ const loginController= require("./controller/login.js");
 const signupController= require("./controller/signup.js");
 app.use("/",generalController,loginController,signupController);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("TERMINAL IS RUNNING");
 })

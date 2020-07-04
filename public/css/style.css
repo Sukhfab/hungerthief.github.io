@@ -514,3 +514,35 @@ form {
     background-color: white;
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, 0.4) !important;
 }
+/* 
+
+responsive design */
+#formError{
+    color: red;
+    margin-bottom: 15px;
+    font-size: smaller;
+    font-family: cursive;
+    font-weight: bolder;
+}
+
+#formz{
+    display: grid;
+    padding: 20px;
+}
+
+ @media screen and (min-width: 768px){
+
+    form{
+         margin: 15px 200px;
+         padding: 0em;
+         border: 0px;
+      }
+  }
+  @media screen and (min-width: 1024px){
+
+    form{
+         margin: 30px 350px;
+         padding: 0em;
+         border: 0px;
+      }
+  }

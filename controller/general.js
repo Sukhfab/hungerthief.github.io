@@ -5,21 +5,6 @@ const packageDB = require("../model/script2.js")
 
 router.get("/", (req, res) => {
 
-    const header = ` <header>
-<p class="header">Get $20 off on your first order!</p>
-<nav class="navbar">
-    <ul>
-    <li id="brand"> <a href="/"> <i class="fas fa-utensils" style="color: Blue;"></i> Hunger
-    Thief</a> </li>
-<li id="list"><a href="/package">All Packages</a></li>
-<li><a href="#chef">Kitchen</a></li>
-<li><a href="#footertext">About us</a></li>
-<li id="right"><a href="/signup">Sign up</a></li>
-    <li id="right"><a href="/login">Login</a></li>
-    </ul>
-
-</nav>
-</header>`;
 
     const fakeDB = new ServicesDB();
     const fakeDB2 = new packageDB();
@@ -27,7 +12,21 @@ router.get("/", (req, res) => {
         top: fakeDB2.getTopmeals(),
         services: fakeDB.getServices(),
         head:"Home page",
-        header
+        header:` <header>
+        <p class="header">Get $20 off on your first order!</p>
+        <nav class="navbar">
+            <ul>
+            <li id="brand"> <a href="/"> <i class="fas fa-utensils" style="color: Blue;"></i> Hunger
+            Thief</a> </li>
+        <li id="list"><a href="/package">All Packages</a></li>
+        <li><a href="#chef">Kitchen</a></li>
+        <li><a href="#footertext">About us</a></li>
+        <li id="right"><a href="/signup">Sign up</a></li>
+            <li id="right"><a href="/login">Login</a></li>
+            </ul>
+        
+        </nav>
+        </header>`
     });
 })
 
