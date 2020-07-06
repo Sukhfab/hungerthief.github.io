@@ -94,6 +94,7 @@ router.post("/submit-signup", (req, res) => {
         storeemail = "";
         storepass = "";
         storeconpass = "";
+        
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey(process.env.MY_API_ID);
         const msg = {
@@ -108,12 +109,64 @@ router.post("/submit-signup", (req, res) => {
         };
         sgMail.send(msg)
         .then(()=>{
-            res.redirect("/");
+            res.redirect("/dashboard");
         })
         .catch(err=>{
             console.log(`error is ${err}`);
         })
     }
 
+})
+
+router.get("/dashboard",(req,res)=>{
+res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script src="https://kit.fontawesome.com/347a9e55b8.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body {
+        background-color: rgb(252, 252, 252);
+    }
+    i {
+        margin-top:10px;
+        color: green;
+        font-size: 25px;
+        text-align: left;
+    }
+</style>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="dash_main">
+            <i class="fas fa-utensils"></i>
+            <div id="dash_top">
+            </div>
+            <div id="eat_repeat">Eat and Repeat</div>
+            <div id="dash_message">
+                <div id="thank">
+                    <h1> Thank you!</h1>
+                </div>
+                <div id="dash_data">
+                    You are sucessfully registered as a new user in Hunger thief.
+                </div>
+            </div>
+        </div>
+
+        <div id="dash_footer">
+            Click <a href="/">here</a> to navigate yourself to the <span id="homepage"> [HUNGER <span
+                    class="thief">THIEF]</span></span>
+        </div>
+    </main>
+</body>
+</html>`)
 })
 module.exports = router;

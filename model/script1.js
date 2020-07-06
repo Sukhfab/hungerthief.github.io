@@ -30,7 +30,8 @@ class ServiceDB {
       caption: 'Goat Cheese Chicken',
       alt: 'Goat Cheese Chicken',
       url: 'Food/p5.jpg',
-      price: "$13.95"
+      price: "$13.95" 
+      
     });
     this.services.push({
       caption: 'Cocunut Curry Salmon',

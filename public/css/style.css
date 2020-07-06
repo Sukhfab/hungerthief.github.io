@@ -24,6 +24,7 @@ body {
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, 0.4) !important;
     padding-bottom: 10px;
     width: 100%;
+    z-index: 2;
 }
 
 .main-nav {
@@ -776,3 +777,56 @@ form {
     }
 
 }
+
+/* dashboard page */
+
+
+#eat_repeat {
+    margin-bottom: 80px;
+    color: #10374270;
+    margin-top: 10px;
+    font-weight: 600;
+    font-family: cursive;
+}
+
+.dash_main {
+    text-align: center;
+}
+
+#thank h1 {
+    font-size: 1.8em;
+    color: #103742;
+    font-weight: 600;
+    line-height: 1.3em;
+    margin: .67em 0;
+}
+
+#dash_message {
+    font-family: "Poppins", sans-serif;
+    padding: 44px;
+    background: #f2f2ee;
+
+}
+
+#dash_footer {
+    text-align: center;
+    margin: 30px;
+    font-family: "Poppins", sans-serif;
+    color: rgba(0, 0, 0, 0.664);
+}
+
+#dash_footer a {
+    color: yellowgreen;
+    font-weight: bolder;
+}
+
+#homepage {
+    font-weight: bold;
+    letter-spacing: .05rem;
+    color: #0f0906;
+}
+
+.thief {
+    color: yellowgreen
+}
+
