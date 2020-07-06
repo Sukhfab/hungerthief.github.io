@@ -89,6 +89,11 @@ router.post("/submit-signup", (req, res) => {
             storedconpass: storeconpass
         })
     } else {
+        storefname ="";
+        storelname = "";
+        storeemail = "";
+        storepass = "";
+        storeconpass = "";
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey(process.env.MY_API_ID);
         const msg = {
