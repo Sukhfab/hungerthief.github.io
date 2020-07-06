@@ -17,57 +17,142 @@ body {
 }
 
 /* styling for nav bar */
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+
+.navbar {
+    font-size: 18px;
     background-color: rgb(60, 156, 124);
-    z-index: 3;
-    width: 100%;
-    position: relative;
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, 0.4) !important;
+    padding-bottom: 10px;
+    width: 100%;
 }
 
+.main-nav {
+    list-style-type: none;
+}
 
-li {
-    display: inline-block;
+.nav-links {
     margin-top: 15px;
     font-family: fantasy;
     font-size: 16px;
-    margin-left: 30px
-}
-
-li a {
-    display: block;
-    padding: 20px 25px;
-    text-align: center;
+    margin-left: 30px;
+    text-decoration: none;
     color: white;
-    text-decoration: solid;
+    padding: 10px 25px;
+}
+
+.nav-links:hover {
+    background-color: whitesmoke;
+    color: rgb(60, 156, 124);
+    transition-duration: 0.3s;
+}
+
+.main-nav li {
+    text-align: center;
+    margin:15px auto;
 
 }
 
-li a:hover {
+.logo {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    padding: 20px 25px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-family: "Lobster", cursive;
+    letter-spacing: 3px;
+    color: white;
+    padding: 20px 25px;
+}
+.navbar-toggle {
+ 
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    float:right;
+    margin-right:40px;
+    margin-top: 30px;
+
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.logo:hover {
     background-color: whitesmoke;
     color: rgb(60, 156, 124);
     transition-duration: 0.3s;
 
 }
 
-
-.navbar ul li:first-child {
-    margin-top: 0;
+#left {
+    margin-right: 0;
 }
 
-/* floating the signup and login link to the right */
-#right {
-    float: right;
+.header {
+    padding: 50px;
+    text-align: center;
+    color: white;
+    font-family: fantasy;
+    font-size: 30px;
+    margin: 0px;
+    background-image: url("../image/pic2.jpg");
+    background-color: lightcoral;
+    background-position: center;
+    background-size: contain;
 }
 
-/* It is setting the margin of First link after the name of the website in the nav bar" */
-#list {
 
-    margin-left: 80px
+@media screen and (min-width: 769px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 24px;
+        padding-top: 10px;
+        height: 80px;
+        align-items: center;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 20px 25px;
+        text-align: center;
+        color: white;
+        text-decoration: solid;
+    }
+    .navbar ul li a:hover {
+        background-color: whitesmoke;
+        color: rgb(60, 156, 124);
+        transition-duration: 0.3s;
+
+    }
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .main-nav li {
+        margin: 0;
+    }
+    .nav-links {
+
+        padding: 20px 25px;
+    }
+    .navbar-toggle {
+        display: none;
+    }
+    #left {
+        margin-right: 100px;
+    }
+
 }
 
 /* styling for nav bar ends here */
@@ -471,7 +556,7 @@ input[type=password]:focus {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 15%;
+    width: 40%;
     opacity: 0.9;
 }
 
@@ -531,9 +616,7 @@ form {
 
 /* hero text */
 
-.hero-image {
-    display: grid;
-}
+
 
 
 @media screen and (min-width: 375px) {
@@ -653,6 +736,7 @@ form {
         padding: 0em;
         border: 0px;
     }
+
 
     /* contentsection */
     #row {
