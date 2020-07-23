@@ -29,6 +29,7 @@ router.post("/submit-signup", (req, res) => {
     if (req.body.email === "") {
         err_email.push("Please enter the email.")
     }
+
     if (req.body.fname === "") {
         err_fname.push("Please enter the First Name.")
     }
@@ -96,9 +97,9 @@ router.post("/submit-signup", (req, res) => {
           })
           user.save((err) => {
             if(err) {
-              console.log("There was an error saving");
+              console.log("There was an error in saving");
             } else {
-                console.log("The user was saved to the HungerThief");
+             console.log("The user was saved to the HungerThief");
             }
          });
         storefname ="";

@@ -40,12 +40,13 @@ router.post("/submit-login", (req, res) => {
         } 
     } else {
         userTable.findOne({
-                Email: req.body.email
+                Email: req.body.email,
+                Password: req.body.password
             })
             .exec()
             .then((company) => {
                 if (!company) {
-                    err_email.push("User cant be found");
+                    err_email.push("Either the Email or the Password does not match");
                 }
 
                 if (err_email.length > 0 || err_pass.length > 0) {
@@ -60,6 +61,7 @@ router.post("/submit-login", (req, res) => {
                     })
 
                 } else {
+
                     res.redirect("/");
                 }
 
