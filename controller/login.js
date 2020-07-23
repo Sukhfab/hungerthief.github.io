@@ -5,6 +5,7 @@ const userTable = require("../server.js")
 
 
 router.get("/login", (req, res) => {
+    console.log(userTable);
     res.render("login", {
         head: "Login page",
 
@@ -46,7 +47,7 @@ router.post("/submit-login", (req, res) => {
             .exec()
             .then((company) => {
                 if (!company) {
-                    err_email.push("Either the Email or the Password does not match");
+                    err_email.push("Either the Email or the Password does not match with our records");
                 }
 
                 if (err_email.length > 0 || err_pass.length > 0) {
