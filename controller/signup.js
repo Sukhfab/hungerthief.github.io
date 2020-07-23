@@ -1,7 +1,6 @@
 const express = require("express");
-const e = require("express");
 const router = express.Router();
-
+const userTable = require("../server.js")
 
 router.get("/signup", (req, res) => {
 
@@ -89,6 +88,19 @@ router.post("/submit-signup", (req, res) => {
             storedconpass: storeconpass
         })
     } else {
+        var user = new userTable({
+            FirstName: req.body.fname, 
+            LastName: req.body.lname,
+            Email: req.body.email,
+            Password: req.body.password 
+          })
+          user.save((err) => {
+            if(err) {
+              console.log("There was an error saving");
+            } else {
+                console.log("The user was saved to the HungerThief");
+            }
+         });
         storefname ="";
         storelname = "";
         storeemail = "";
@@ -140,7 +152,6 @@ res.send(`<!DOCTYPE html>
         text-align: left;
     }
 </style>
-
 <body>
     <header>
 

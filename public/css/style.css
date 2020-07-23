@@ -17,10 +17,12 @@ body {
 }
 
 /* styling for nav bar */
-
+#knife{
+color:yellow;
+}
 .navbar {
     font-size: 18px;
-    background-color: rgb(60, 156, 124);
+    background-color: rgb(95, 43, 43);
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, 0.4) !important;
     padding-bottom: 10px;
     width: 100%;
@@ -39,11 +41,11 @@ body {
     text-decoration: none;
     color: white;
     padding: 10px 25px;
+   
 }
 
 .nav-links:hover {
-    background-color: whitesmoke;
-    color: rgb(60, 156, 124);
+    background-color: rgb(71, 32, 32);
     transition-duration: 0.3s;
 }
 
@@ -87,8 +89,8 @@ body {
 }
 
 .logo:hover {
-    background-color: whitesmoke;
-    color: rgb(60, 156, 124);
+    background-color: rgb(71, 32, 32);
+    color: whitesmoke;
     transition-duration: 0.3s;
 
 }
@@ -127,12 +129,6 @@ body {
         text-align: center;
         color: white;
         text-decoration: solid;
-    }
-    .navbar ul li a:hover {
-        background-color: whitesmoke;
-        color: rgb(60, 156, 124);
-        transition-duration: 0.3s;
-
     }
     .main-nav {
         display: flex;
@@ -210,7 +206,7 @@ h2 {
 #below_hero {
     border: none;
     padding: 10px;
-    background-color: rgb(146, 219, 195);
+    background-color: rgb(197, 124, 124);
     text-align: center;
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
