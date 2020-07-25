@@ -19,8 +19,23 @@ var hungerThiefUser = new Schema({
     "Email": String,
     "Password": String 
   });
+  var hungerThiefmeal = new Schema({
+    "packagename":  String, 
+    "meals": String,
+    "synopsis": String,
+    "category": String ,
+    "price": String ,
+    "description": String,
+    "image":String,
+    "istop":Boolean
+
+  });
   var usersTable = mongoose.model("Hungerthief", hungerThiefUser);
-  module.exports = usersTable;
+  var mealsTable = mongoose.model("Hungerthiefmeal", hungerThiefmeal);
+const tables={
+    usersTable,mealsTable
+}
+  module.exports = tables;
 // mangoDB
 
 app.use(express.static('public'));
@@ -32,7 +47,9 @@ app.set('view engine', 'handlebars');
 const generalController = require("./controller/general.js");
 const loginController= require("./controller/login.js");
 const signupController= require("./controller/signup.js");
-app.use("/",generalController,loginController,signupController);
+const altermealController = require("./controller/alterMeal.js");
+
+app.use("/",generalController,loginController,signupController,altermealController);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("TERMINAL IS RUNNING");

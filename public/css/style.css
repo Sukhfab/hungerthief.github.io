@@ -1,6 +1,7 @@
 body {
     margin: 0;
 }
+@import url('https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet&display=swap');
 
 /* setting the font and background image for the header image(above the nav bar) */
 .header {

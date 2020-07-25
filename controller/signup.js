@@ -90,7 +90,7 @@ router.post("/submit-signup", (req, res) => {
         })
     } 
 }else
-    userTable.findOne({
+    userTable.usersTable.findOne({
         Email: req.body.email
     })
     .exec()
@@ -106,7 +106,6 @@ router.post("/submit-signup", (req, res) => {
             storepass = req.body.password;
             storeconpass = req.body.passwordrepeat;
             res.render("signup", {
-                
                 head: "Sign up page",
                 email: err_email,
                 pass: err_pass,
@@ -120,7 +119,7 @@ router.post("/submit-signup", (req, res) => {
                 storedconpass: storeconpass
             })
         } else {
-            var user = new userTable({
+            var user = new userTable.usersTable({
                 FirstName: req.body.fname, 
                 LastName: req.body.lname,
                 Email: req.body.email,

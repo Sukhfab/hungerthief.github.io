@@ -5,7 +5,6 @@ const userTable = require("../server.js")
 
 
 router.get("/login", (req, res) => {
-    console.log(userTable);
     res.render("login", {
         head: "Login page",
 
@@ -40,7 +39,7 @@ router.post("/submit-login", (req, res) => {
 
         } 
     } else {
-        userTable.findOne({
+        userTable.usersTable.findOne({
                 Email: req.body.email,
                 Password: req.body.password
             })
