@@ -108,7 +108,8 @@ router.post("/deletemeal", (req, res) => {
         res.render("deletemeal", {
           head: "Update page",
           err:"The Meal is not found."
-        });}else{
+        });}
+        else{
   database.mealsTable.deleteOne({ packagename: req.body.name  })
 .exec()
 .then(() => {
@@ -124,5 +125,14 @@ router.post("/deletemeal", (req, res) => {
 }
 });
 })
+
+  // meal opn
+  router.get("/mealdetail", (req, res) => {
+    // console.log(req.body.packageCaption[i]);
+    // console.log();
+    res.render("mealdetails", {
+      head: "delete meal page",
+    });
+  })
   
 module.exports = router;

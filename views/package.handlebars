@@ -10,12 +10,17 @@ ID -152946182 --}}
     <div id="package">
         {{#each package}}
         <div>
-            <img src="{{this.url}}" alt="{{this.alt}}">
-            <p id="packCaption"> {{this.caption}}</p>
-            <p id="packDes"> {{this.des}}</p>
-            <p id="packMeal">(Includes {{this.meal}} meals)</p>
-            <p id="packSyn">{{this.Synopsis}}</p>
-            <p id="packPrice"> Starts from ${{this.price}}</p>
+            <form action="/mealdetail" method="post">
+                <img src="{{this.url}}" alt="{{this.alt}}">
+
+                <button>
+                    <p id="packCaption" style="margin-left: 20px;">{{this.caption}} </p>
+                </button>
+                <p id="packDes"> {{this.des}}</p>
+                <p id="packMeal">(Includes {{this.meal}} meals)</p>
+                <p id="packSyn">{{this.Synopsis}}</p>
+                <p id="packPrice"> Starts from ${{this.price}}</p>
+            </form>
         </div>
         {{/each}}
 
@@ -29,9 +34,24 @@ ID -152946182 --}}
         grid-rows: auto;
     }
 
+    button {
+        border: none;
+        margin-left: 10px;
+    }
+
+    button:focus {
+        outline: 0 !important;
+    }
+
+    form {
+        box-shadow: 0 0 0 !important;
+    }
+
+
     @media screen and (min-width: 375px) {
         #package {
             margin-left: 100px;
         }
     }
 </style>
+<script src="../controller/alterMeal.js"></script>

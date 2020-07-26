@@ -6,11 +6,33 @@ const database = require("../server.js")
 
 router.get("/", (req, res) => {
     const fakeDB = new ServicesDB();
-    const fakeDB2 = new packageDB();
+    // const fakeDB2 = new packageDB();
+    database.mealsTable.find()
+        .exec()
+        .then((meal) => {
+            if (meal) {
+                let x = meal;
+                let y = [];
+                x.forEach((ele) => {
+                    if (ele.istop){
+                    y.push({
+                        url: ele.image,
+                        caption: ele.packagename,
+                        des:ele.description,//
+                        meal:ele.meals,//
+                        Synopsis: ele.synopsis,
+                        price:ele.price//
+                    });
+                }
+
+                })
     res.render("home", {
-        top: fakeDB2.getTopmeals(),
+        top:y,
         services: fakeDB.getServices(),
         head: "Home page",
+    });
+}
+
     });
 })
 
@@ -27,7 +49,7 @@ router.get("/package", (req, res) => {
                         caption: ele.packagename,
                         des:ele.description,//
                         meal:ele.meals,//
-                        Synopsis: ele.synopsis  ,
+                        Synopsis: ele.synopsis,
                         price:ele.price//
                     });
 
