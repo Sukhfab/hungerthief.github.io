@@ -98,6 +98,17 @@ router.get("/deletemeal", (req, res) => {
 })
 
 router.post("/deletemeal", (req, res) => {
+  database.mealsTable.findOne({
+    packagename: req.body.name,
+  })
+  .exec()
+  .then((meal) => {
+    if (!meal) {
+
+        res.render("deletemeal", {
+          head: "Update page",
+          err:"The Meal is not found."
+        });}else{
   database.mealsTable.deleteOne({ packagename: req.body.name  })
 .exec()
 .then(() => {
@@ -110,5 +121,8 @@ router.post("/deletemeal", (req, res) => {
   res.render("deletemeal", {
     head: "delete meal page",
   });
+}
+});
 })
+  
 module.exports = router;

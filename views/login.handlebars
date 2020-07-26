@@ -1,43 +1,54 @@
 {{!-- Name: Sukhbir Singh
 ID -152946182 --}}
-<main>
-    <div id="formz" >
-        <form action="submit-login"  method="POST">
-            <div class="container" style="border: 3px solid #f1f1f1">
-                <h1>Sign in</h1>
-                <p>Enter your details to sign in.</p>
-                <hr>
 
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" value={{storedEmail}}>
-                <div id="formError" style="margin-top: 0px;"> 
-                    {{#each email}}
+<main role="main" class="container-fluid">
+    <div class="jumbotron" style="padding: 2rem 2rem; margin-top:20px">
+        <h1>Log in</h1>
+        <p class=" lead">Fill the field to Log in to Hunger Thief</p>
+        <p style="color:#ef5350"> All fields required</p>
+
+    </div>  
+
+</main>
+    <div class="form">
+        <div class="container" style="padding-bottom: 80px">
+            <!--"-->
+            <form  action="submit-login" method="Post" >
+                <div class=" form-group row">
+                    <div class="col">
+                        <label for="name">Email</label>
+                        <input type="text" name="email" class="form-control"
+                            placeholder="Email" value={{storedEmail}}>
+                        <div style="color: width: 100%;
+                            margin-top: .25rem;
+                            font-size: 80%;
+                            color: #dc3545;"> 
+                            {{#each email}}
                     {{this}}
                     {{/each}}
+                    </div> 
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control"
+                        placeholder="Password" value={{storedPass}} >
+                  
+                </div>
+                 <div style="color: width: 100%;
+                            margin-top: .25rem;
+                            font-size: 80%;
+                            color: #dc3545;"> 
+                            {{#each pass}}
+                    {{this}}
+                    {{/each}}
+                    </div> 
                 
-                        
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" id="psw"
-                    style="margin: 5px 0 2px 0;" value={{storedPass}}>
-                <div id="formError"> 
-                    {{#each pass}}
-                    {{this}}
-                    {{/each}}
-                    </div>
-
-
-                <p><a href="#">Forgot Password</a></p>
-                <button type="submit" class="signinupbtn">Sign in</button>
-                <br>
-
-            </div>
-
-            <div class="container signup">
+                <button type="submit" class="btn btn-secondary btn-lg">Log in</button> <br> <br>
+                <div class="form-group ">
                 <p> New User? <a href="/signup">Create an Account</a>.</p>
             </div>
-        </form>
+            </form>
+        </div>
     </div>
-{{confirmation}}
-</main>
-
