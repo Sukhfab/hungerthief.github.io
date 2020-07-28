@@ -126,13 +126,43 @@ router.post("/deletemeal", (req, res) => {
 });
 })
 
-  // meal opn
-  router.get("/mealdetail", (req, res) => {
-    // console.log(req.body.packageCaption[i]);
-    // console.log();
-    res.render("mealdetails", {
-      head: "delete meal page",
-    });
+  // meal detail
+  router.post("/mealdetail", (req, res) => {
+   database.mealsTable.findOne({
+    packagename: req.body.name,
   })
+  .exec()
+  .then((meal)=>{
+    if(meal){
+      ele=meal;
+      res.render("mealdetails", {
+        head: `${ele.packagename} Meal`,
+        name: ele.packagename,
+        price: ele.price,
+        synopsis: ele.synopsis,
+        meals: ele.meals,
+        desc: ele.description,
+        image: ele.image,
+        istop: ele.istop,
+        category: ele.category
+      });
   
+    }
+})
+})
+
+
+//checjkolut
+router.post("/checkout", (req, res) => {
+  res.render("checkout", {
+    head: "checekout meal page",
+  });
+})
+router.post("/shipping", (req, res) => {
+  res.render("shipping", {
+    head: "checekout meal page",
+    show:req.body.fname
+  });
+})
+
 module.exports = router;

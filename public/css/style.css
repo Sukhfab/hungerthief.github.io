@@ -47,7 +47,9 @@ color:yellow;
 
 .nav-links:hover {
     background-color: rgb(71, 32, 32);
+    color:white;
     transition-duration: 0.3s;
+    text-decoration: none;
 }
 
 .main-nav li {

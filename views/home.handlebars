@@ -65,13 +65,18 @@
 
     <div id="package">
         {{#each top}}
-        <div>
-            <img src="{{this.url}}" alt="{{this.alt}}">
-            <p id="packCaption"> {{this.caption}}</p>
-            <p id="packDes"> {{this.des}}</p>
-            <p id="packMeal">(Includes {{this.meal}} meals)</p>
-            <p id="packSyn">{{this.Synopsis}}</p>
-            <p id="packPrice">Starts from ${{this.price}}</p>
+         <div id="insidepack">
+            <form action="/mealdetail" method="post">
+                 <input type="text" name="name" value="{{this.caption}}" style="display: none;">
+                <img src="{{this.url}}" alt="{{this.alt}}">
+                <button>
+                    <p id="packCaption" style=" width:150px">{{this.caption}} </p>
+                </button>
+                <p id="packDes"> {{this.des}}</p>
+                <p id="packMeal">(Includes {{this.meal}} meals)</p>
+                <p id="packSyn">{{this.Synopsis}}</p>
+                <p id="packPrice"> Starts from ${{this.price}}</p>
+            </form>
         </div>
         {{/each}}
     </div>
@@ -91,11 +96,43 @@
 
     </p>
     <!-- Top meal -->
-    <style>
+   <style>
+    #package {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-rows: auto;
+    }
+
+    button {
+        border: none;
+        margin-left: 10px;
+       width: 150px;
+       height: 0px;
+    background-color: white;
+    }
+
+    button:focus {
+        outline: 0 !important;
+    }
+
+    form {
+        box-shadow: 0 0 0 !important;
+        width:200px
+    }
+
+    @media screen and (min-width: 375px) {
         #package {
-            grid-template-columns: auto auto;
-            justify-content: center;
-            align-items: center;
+            margin-left: 100px;
         }
-    </style>
+    }
+    #packCaption{
+        margin-left: 20px;
+    }
+        @media screen and (min-width: 768px) {
+        #packCaption {
+            margin-left: 30px;
+        }
+    }
+</style>
 </main>

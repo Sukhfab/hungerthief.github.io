@@ -9,12 +9,12 @@ ID -152946182 --}}
     </div>
     <div id="package">
         {{#each package}}
-        <div>
+        <div id="insidepack">
             <form action="/mealdetail" method="post">
+                 <input type="text" name="name" value="{{this.caption}}" style="display: none;">
                 <img src="{{this.url}}" alt="{{this.alt}}">
-
                 <button>
-                    <p id="packCaption" style="margin-left: 20px;">{{this.caption}} </p>
+                    <p id="packCaption" style=" width:150px">{{this.caption}} </p>
                 </button>
                 <p id="packDes"> {{this.des}}</p>
                 <p id="packMeal">(Includes {{this.meal}} meals)</p>
@@ -37,6 +37,9 @@ ID -152946182 --}}
     button {
         border: none;
         margin-left: 10px;
+       width: 150px;
+       height: 0px;
+    background-color: white;
     }
 
     button:focus {
@@ -45,12 +48,20 @@ ID -152946182 --}}
 
     form {
         box-shadow: 0 0 0 !important;
+        width:200px
     }
-
 
     @media screen and (min-width: 375px) {
         #package {
             margin-left: 100px;
+        }
+    }
+    #packCaption{
+        margin-left: 20px;
+    }
+        @media screen and (min-width: 768px) {
+        #packCaption {
+            margin-left: 30px;
         }
     }
 </style>
