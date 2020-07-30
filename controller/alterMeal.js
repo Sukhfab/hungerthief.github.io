@@ -126,10 +126,13 @@ router.post("/deletemeal", (req, res) => {
 });
 })
 
+
+   
   // meal detail
-  router.post("/mealdetail", (req, res) => {
+  router.get("/mealdetail/:caption", (req, res) => {
+    
    database.mealsTable.findOne({
-    packagename: req.body.name,
+    packagename: req.params.caption,
   })
   .exec()
   .then((meal)=>{
@@ -152,10 +155,10 @@ router.post("/deletemeal", (req, res) => {
 })
 
 let y=[];
-router.post("/checkout", (req, res) => {
-  let quantity=req.body.quantity;
+router.get("/checkout/:name", (req, res) => {
+  let quantity=2;
   database.mealsTable.findOne({
-    packagename: req.body.name,
+    packagename: req.params.name,
   })
   .exec()
   .then((meal)=>{

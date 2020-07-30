@@ -63,20 +63,17 @@
     <div id="chef">Top meal packages!</div>
     <div id="chef2">Get on exclusive prices!</div>
 
+
+
     <div id="package">
         {{#each top}}
-         <div id="insidepack">
-            <form action="/mealdetail" method="post">
-                 <input type="text" name="name" value="{{this.caption}}" style="display: none;">
-                <img src="{{this.url}}" alt="{{this.alt}}">
-                <button>
-                    <p id="packCaption" style=" width:150px">{{this.caption}} </p>
-                </button>
-                <p id="packDes"> {{this.des}}</p>
-                <p id="packMeal">(Includes {{this.meal}} meals)</p>
-                <p id="packSyn">{{this.Synopsis}}</p>
-                <p id="packPrice"> Starts from ${{this.price}}</p>
-            </form>
+        <div>
+            <img src="{{this.url}}" alt="{{this.alt}}">
+            <p id="packCaption"><a href="/mealdetail/{{this.caption}}"> {{this.caption}}</a> </p>
+            <p id="packDes"> {{this.des}}</p>
+            <p id="packMeal">(Includes {{this.meal}} meals)</p>
+            <p id="packSyn">{{this.Synopsis}}</p>
+            <p id="packPrice">{{this.price}}</p>
         </div>
         {{/each}}
     </div>
@@ -96,43 +93,18 @@
 
     </p>
     <!-- Top meal -->
-   <style>
-    #package {
-        display: grid;
-        grid-gap: 5px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-rows: auto;
-    }
-
-    button {
-        border: none;
-        margin-left: 10px;
-       width: 150px;
-       height: 0px;
-    background-color: white;
-    }
-
-    button:focus {
-        outline: 0 !important;
-    }
-
-    form {
-        box-shadow: 0 0 0 !important;
-        width:200px
-    }
-
-    @media screen and (min-width: 375px) {
+    <style>
         #package {
-            margin-left: 100px;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            align-items: center;
         }
+         #packCaption> a{
+        color: #000000B0;
     }
-    #packCaption{
-        margin-left: 20px;
-    }
-        @media screen and (min-width: 768px) {
-        #packCaption {
-            margin-left: 30px;
-        }
-    }
-</style>
+   #packCaption> a:hover {
+    color: rgba(29, 153, 202, 0.966);
+    transition-duration: 0.25s;
+}
+    </style>
 </main>
