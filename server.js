@@ -30,10 +30,26 @@ var hungerThiefUser = new Schema({
     "istop":Boolean
 
   });
+  var checkoutData = new Schema({
+    "FirstName":  String, 
+    "LastName": String,
+    "Email": String,
+    "Address": String ,
+    "Zip": String, 
+    "city": String ,
+    "prvince": String ,
+    "country": String ,
+    "cardname": String ,
+    "cardnumber": String ,
+    "cardexpiry": String ,
+    "cardcvv": String ,
+  });
   var usersTable = mongoose.model("Hungerthief", hungerThiefUser);
   var mealsTable = mongoose.model("Hungerthiefmeal", hungerThiefmeal);
+  var checkoutInfo = mongoose.model("UserCheckoutData", checkoutData);
+
 const tables={
-    usersTable,mealsTable
+    usersTable,mealsTable,checkoutInfo
 }
   module.exports = tables;
 // mangoDB
