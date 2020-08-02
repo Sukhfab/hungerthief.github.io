@@ -1,11 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const database = require("../server.js")
+function ensureLogin(req, res, next) {
+  if (!req.session.user) {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+}
+   
 
-router.get("/addmeal", (req, res) => {
+router.get("/addmeal",ensureLogin, (req, res) => {
 
   res.render("AddMeal", {
-    head: "Add page",
+    head: "Add page",  
   });
 })
 router.post("/mealdatabase", (req, res) => {
@@ -34,14 +42,14 @@ router.post("/mealdatabase", (req, res) => {
 
 
 // update meal
-router.get("/updatemeal", (req, res) => {
+router.get("/updatemeal", ensureLogin, (req, res) => {
 
   res.render("updatemeal", {
     head: "Update page",
   });
 })
 
-router.post("/updatemeal", (req, res) => {
+router.post("/updatemeal",ensureLogin, (req, res) => {
   let error;
   database.mealsTable.findOne({
       packagename: req.body.name,
@@ -91,7 +99,7 @@ res.redirect("/");
 
 
 // delete meal
-router.get("/deletemeal", (req, res) => {
+router.get("/deletemeal",ensureLogin, (req, res) => {
   res.render("deletemeal", {
     head: "delete meal page",
   });
@@ -127,7 +135,6 @@ router.post("/deletemeal", (req, res) => {
 })
 
 
-   
   // meal detail
   router.get("/mealdetail/:caption", (req, res) => {
     
@@ -155,10 +162,10 @@ router.post("/deletemeal", (req, res) => {
 })
 
 let y=[];
-router.get("/checkout/:name", (req, res) => {
-  let quantity=2;
+router.post("/checkout",ensureLogin, (req, res) => {
+  let quantity=req.body.quantity;
   database.mealsTable.findOne({
-    packagename: req.params.name,
+    packagename: req.body.name,
   })
   .exec()
   .then((meal)=>{
@@ -214,7 +221,7 @@ router.get("/checkout/:name", (req, res) => {
 })
 
 
-router.post("/shipping", (req, res) => {
+router.post("/shipping",ensureLogin, (req, res) => {
   var usercheckout = new database.checkoutInfo({
     FirstName:  req.body.fname, 
     LastName: req.body.lname,
@@ -224,10 +231,10 @@ router.post("/shipping", (req, res) => {
     city: req.body.city ,
     prvince: req.body.province,
     country: req.body.country ,
-    cardname: req.body.cardname ,
-    cardnumber: req.body.cardnumber ,
-    cardexpiry: req.body.cardexpiry ,
-    cardcvv: req.body.cardcvv,
+    cardname: req.body.cname ,
+    cardnumber: req.body.cnumber ,
+    cardexpiry: req.body.cexpiry ,
+    cardcvv: req.body.cvv,
   })
   usercheckout.save((err) => {
     if(err) {

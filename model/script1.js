@@ -59,6 +59,7 @@ class ServiceDB {
     });
   }
 
+  
   getServices() {
     return this.services;
   }

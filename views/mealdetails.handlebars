@@ -15,19 +15,22 @@
             </div>
             <p id="detailmeals">You will have a total of <b>{{meals}}</b> meals in this package.</p>
             {{!-- <form action="/checkout" method="post"> --}}
+              <form action="/checkout" method="POST">
                 <div>
                     <button type="button" id="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                         class="minus decrease btn btn-outline-danger">-</button>
-                    <input class="quantityy" min="0" name="quantity" value="1" type="number" id="quantityyy">
-                    {{!-- <input type="text" name="name"  style="display: none;" value="{{name}}"> --}}
-                    <button  type="button" id="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                     <input class="quantityy" min="0" name="quantity" value="1" type="number" id="quantityyy">
+
+                    <input  name="name" value="{{name}}" style="display: none;">
+                     <button  type="button" id="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                         class="plus increase btn btn-outline-danger">+</button>
                     <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false"
                         autocomplete="off">
-                        <a href="/checkout/{{name}}" style="color: white;" > Add to cart</a>
-                       
+                        Add to cart
+                        {{!-- <a href="/checkout/{{name}}" style="color: white;" > </a> --}}
                     </button>
                 </div>
+                </form>
             {{!-- </form> --}}
               <div id="des">
                     {{desc}}
@@ -38,10 +41,6 @@
 </div>
 
 <script>
-    function showQuantity(){
-    let quan=document.getElementById("quantityyy").value;
-return quan;
-    }
 </script>
 
 <script src="../model/script2.js"></script>

@@ -61,8 +61,15 @@ router.post("/submit-login", (req, res) => {
                     })
 
                 } else {
-
+                    req.session.user = {
+                        Email: req.body.email,
+                        Password: req.body.password
+                      };
+                      if (req.body.email==="ss9112000@gmail.com")
+                    res.redirect("/package");
+                    else
                     res.redirect("/");
+
                 }
 
             })
@@ -72,5 +79,10 @@ router.post("/submit-login", (req, res) => {
 
 
 })
+
+router.get("/logout", function(req, res) {
+    req.session.reset();
+    res.redirect("/login");
+  });
 
 module.exports = router;

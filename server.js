@@ -7,7 +7,22 @@ const app = express();
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 require('dotenv').config({path : "./key.env"});
+const clientSessions = require("client-sessions");
+// Setup client-sessions
+app.use(clientSessions({
+  cookieName: "session", // this is the object name that will be added to 'req'
+  secret: "week10example_web322", // this should be a long un-guessable string.
+  duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
+  activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+}));
 
+function ensureLogin(req, res, next) {
+  if (!req.session.user) {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+}
 // mangoDB
 var mongoose = require("mongoose");
 let pass1 = encodeURIComponent("&ahiL2000"); // this step is needed if there are special characters in your password, ie "$"
