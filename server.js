@@ -5,28 +5,23 @@
 const express = require("express");
 const app = express();
 var exphbs = require('express-handlebars');
+//body parser
 var bodyParser = require('body-parser');
 require('dotenv').config({path : "./key.env"});
+//session
 const clientSessions = require("client-sessions");
 // Setup client-sessions
 app.use(clientSessions({
   cookieName: "session", // this is the object name that will be added to 'req'
   secret: "week10example_web322", // this should be a long un-guessable string.
-  duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
+  duration: 4 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
   activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
 }));
 
-function ensureLogin(req, res, next) {
-  if (!req.session.user) {
-    res.redirect("/login");
-  } else {
-    next();
-  }
-}
 // mangoDB
 var mongoose = require("mongoose");
-let pass1 = encodeURIComponent("&ahiL2000"); // this step is needed if there are special characters in your password, ie "$"
-mongoose.connect(`mongodb+srv://sukhLikesMango:${pass1}@cluster0.4wqpx.mongodb.net/Web322?retryWrites=true&w=majority`,{ useNewUrlParser: true, useUnifiedTopology: true });
+let a=`mongodb+srv://sukhLikesMango:${encodeURIComponent(process.env.MONGOCONNECT)}@cluster0.4wqpx.mongodb.net/Web322?retryWrites=true&w=majority`;
+mongoose.connect( a,{ useNewUrlParser: true, useUnifiedTopology: true });
 var Schema = mongoose.Schema;
 var hungerThiefUser = new Schema({
     "FirstName":  String, 

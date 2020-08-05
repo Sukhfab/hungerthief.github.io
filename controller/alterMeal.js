@@ -80,7 +80,7 @@ router.post("/updatemeal",ensureLogin, (req, res) => {
     })
 })
 
-router.post("/mealupdated", (req, res) => {
+router.post("/mealupdated",ensureLogin, (req, res) => {
 
   database.mealsTable.updateOne(
     {    packagename: req.body.name },
@@ -136,7 +136,7 @@ router.post("/deletemeal", (req, res) => {
 
 
   // meal detail
-  router.get("/mealdetail/:caption", (req, res) => {
+  router.get("/mealdetail/:caption",(req, res) => {
     
    database.mealsTable.findOne({
     packagename: req.params.caption,

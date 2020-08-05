@@ -26,6 +26,7 @@ router.get("/", (req, res) => {
                 }
 
                 })
+               
     res.render("home", {
         top:y,
         services: fakeDB.getServices(),
