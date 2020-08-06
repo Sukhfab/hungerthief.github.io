@@ -27,7 +27,7 @@ router.get("/alter",ensureAuthorization,(req,res)=>{
 
 router.get("/addmeal",ensureAuthorization, (req, res) => {
 
-    res.render("AddMeal", {
+    res.render("addMeal", {
       head: "Add page",
       alter:isalter
 
