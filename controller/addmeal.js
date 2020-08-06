@@ -19,6 +19,12 @@ function ensureAuthorization(req, res, next) {
   }
 }
 
+router.get("/alter",ensureAuthorization,(req,res)=>{
+    res.render("alter",{alter:isalter
+    });
+    
+})
+
 router.get("/addmeal",ensureAuthorization, (req, res) => {
 
     res.render("AddMeal", {

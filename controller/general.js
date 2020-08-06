@@ -7,8 +7,7 @@ let isalter =loginController.alter;
 
 router.get("/", (req, res) => {
     const fakeDB = new ServicesDB();
-    // const fakeDB2 = new packageDB();
-    database.mealsTable.find()
+        database.mealsTable.find()
         .exec()
         .then((meal) => {
             if (meal) {
@@ -33,7 +32,6 @@ router.get("/", (req, res) => {
         services: fakeDB.getServices(),
         head: "Home page",
         alter:isalter
-        // alter:ensureAuthorizationn()
     });
 }
 
@@ -63,7 +61,6 @@ router.get("/package", (req, res) => {
                     head: "Package page",
                     package: y,
                     alter:isalter
-
                 });
             }
 

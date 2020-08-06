@@ -82,7 +82,7 @@ router.post("/submit-login", (req, res) => {
                             alter:alter 
                         });
                     }else{
-                        //if the user is not clerk, then do not show Alter link on the nav
+                        //if the user is not clerk, then do not show Alter link on the navbar
                         const index = alter.indexOf("Alter");
                         if (index > -1) {
                           alter.splice(index, 1);

@@ -9,23 +9,23 @@ ID -152946182 --}}
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/347a9e55b8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
-<!--Bootstrap Stylesheet imported-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Bootstrap Stylesheet imported-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{head}}</title>
 </head>
 
 <body>
-    <header >
+    <header>
         <p class="header">Get variety of Meal Packages!</p> {{loggeduser}}
         <nav class="navbar">
-           
+
             <span class="navbar-toggle" id="js-navbar-toggle">
                 <i class="fas fa-bars"></i>
             </span>
-            <a href="/" class="logo"><i id="knife" class="fas fa-utensils" ></i> Hunger Thief</a>
+            <a href="/" class="logo"><i id="knife" class="fas fa-utensils"></i> Hunger Thief</a>
 
             <ul class="main-nav" id="js-menu" style="margin-right: 40px;">
                 <li>
@@ -34,26 +34,30 @@ ID -152946182 --}}
                 <li>
                     <a href="/package" class="nav-links">All Packages</a>
                 </li>
-    
+
                 <li>
                     <a href="/#chef" class="nav-links">Top Meals</a>
                 </li>
-    
+
+
                 <li id="left">
                     <a href="#footertext" class="nav-links">About us</a>
                 </li>
-     <li>
-                    <a href="/" class="nav-links">{{alter}}</a>
+                {{#if alter}}
+                <li>
+                    <a href="/alter" class="nav-links">{{alter}}</a>
                 </li>
+                {{/if}}
+
                 <li>
                     <a href="/login" class="nav-links">Login</a>
                 </li>
-    
+
                 <li>
                     <a href="/logout" class="nav-links">Logout</a>
                 </li>
             </ul>
-           
+
         </nav>
     </header>
     {{{body}}}
@@ -153,7 +157,7 @@ ID -152946182 --}}
     * {
         box-sizing: border-box;
     }
-    
+
     .navbar {
         display: block;
         flex-wrap: nowrap;
@@ -180,4 +184,5 @@ ID -152946182 --}}
         }
     }
 </style>
+
 </html>
