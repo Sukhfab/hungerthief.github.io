@@ -73,9 +73,13 @@ app.set('view engine', 'handlebars');
 const generalController = require("./controller/general.js");
 const loginController= require("./controller/login.js");
 const signupController= require("./controller/signup.js");
-const altermealController = require("./controller/alterMeal.js");
+const altermealController = require("./controller/authorization.js");
+const addmealController = require("./controller/addmeal.js");
+const updatemealController = require("./controller/updatemeal.js");
+const deletemealController = require("./controller/deletemeal.js");
+const checkoutController = require("./controller/checkout.js");
 
-app.use("/",generalController,loginController,signupController,altermealController);
+app.use("/",generalController,loginController.router,signupController,altermealController,addmealController,updatemealController,deletemealController,checkoutController);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("TERMINAL IS RUNNING");

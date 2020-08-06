@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const userTable = require("../server.js")
 var bcrypt = require('bcryptjs');
+let alter=[];
 router.get("/login", (req, res) => {
     res.render("login", {
         head: "Login page",
-
+        alter:alter
     });
 })
 
@@ -72,11 +73,24 @@ router.post("/submit-login", (req, res) => {
                         FirstName:company.FirstName,
                         
                     };
-                    //console.log(req.session.user);
+                    console.log(`${req.session.user.FirstName} is logged in`);
+                    if (req.session.user.Email==="ss9112000@gmail.com"){
+                        console.log("Data entry clerk is logged in");
+                        alter.push("Alter");
+                        res.render("login", {
+                            confirmation: `Hello ${company.FirstName} (Data entry clerk), you are successfully logged in. You have access to change the meal information`,
+                            alter:alter 
+                        });
+                    }else{
+                        //if the user is not clerk, then do not show Alter link on the nav
+                        const index = alter.indexOf("Alter");
+                        if (index > -1) {
+                          alter.splice(index, 1);
+                        }
                     res.render("login", {
-                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`,
-                     
+                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`, 
                     });
+                }
                 }
             })
     }
@@ -85,6 +99,10 @@ router.post("/submit-login", (req, res) => {
 
 router.get("/logout", function (req, res) {
     req.session.reset();
+    const index = alter.indexOf("Alter");
+    if (index > -1) {
+      alter.splice(index, 1);
+    }
     res.send(`<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -135,4 +153,4 @@ router.get("/logout", function (req, res) {
     </html>`)
 });
 
-module.exports = router;
+module.exports = {router,alter};

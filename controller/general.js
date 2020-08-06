@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const ServicesDB = require("../model/script1.js")
-const packageDB = require("../model/script2.js")
 const database = require("../server.js")
+const loginController= require("./login.js");
+let isalter =loginController.alter;
 
 router.get("/", (req, res) => {
     const fakeDB = new ServicesDB();
@@ -31,6 +32,8 @@ router.get("/", (req, res) => {
         top:y,
         services: fakeDB.getServices(),
         head: "Home page",
+        alter:isalter
+        // alter:ensureAuthorizationn()
     });
 }
 
@@ -59,6 +62,7 @@ router.get("/package", (req, res) => {
                 res.render("package", {
                     head: "Package page",
                     package: y,
+                    alter:isalter
 
                 });
             }

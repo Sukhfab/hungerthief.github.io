@@ -1,10 +1,14 @@
-
 <main role="main" class="container-fluid">
     <div class="jumbotron" style="padding: 2rem 2rem; margin-top:20px">
         <h1>Delete Package</h1>
         <p class=" lead">Fill the Meal Package name to delete it.</p>
         <p style="color:#ef5350"> All fields required</p>
-
+        <div style="color: width: 100%;
+                            margin-top: .25rem;
+                            font-size: 80%;
+                            color: green;">
+            {{confirmation}}
+        </div>
     </div>
 
 </main>
@@ -16,18 +20,18 @@
             <div class=" form-group row">
                 <div class="col">
                     <label for="First Name">Meal Package name</label>
-                    <input type="text" name="name" class="form-control" id="validationCustom01" placeholder="Meal package name"
-                        required>
+                    <input type="text" name="name" class="form-control" id="validationCustom01"
+                        placeholder="Meal package name" required>
                     <div class="invalid-feedback">
                         Field Can't be left empty.
                     </div>
-                        <div style="color: width: 100%;
+                    <div style="color: width: 100%;
     margin-top: .25rem;
     font-size: 80%;
-    color: #dc3545;">{{err}}</div> 
+    color: #dc3545;">{{err}}</div>
 
                 </div>
-                    <br>
+                <br>
                 <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
 
         </form>
@@ -64,15 +68,14 @@
     </script>
 
 <style>
-     form {
+    form {
         padding: 20px;
         margin: 0px;
         border: 3px solid #f1f1f1;
     }
-button{
+
+    button {
         height: 45px;
         margin-top: 32px;
     }
-
-   
 </style>

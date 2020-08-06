@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const userTable = require("../server.js")
+const loginController= require("./login.js");
+let isalter =loginController.alter;
 ////////////////////////
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(12);
@@ -11,6 +13,8 @@ router.get("/signup", (req, res) => {
 
     res.render("signup", {
         head: "Sign up page",
+        alter:isalter
+
     });
 })
 
@@ -120,15 +124,17 @@ router.post("/submit-signup", (req, res) => {
                     storedlname: storelname,
                     storedemail: storeemail,
                     storedpass: storepass,
-                    storedconpass: storeconpass
+                    storedconpass: storeconpass,
+                    alter:isalter
+
                 })
             } else {
                 var hash = bcrypt.hashSync(req.body.password, salt);
                 var user = new userTable.usersTable({
                     FirstName: req.body.fname,
                     LastName: req.body.lname,
-                   Email: req.body.email,
-                    Password:hash
+                    Email: req.body.email,
+                    Password: hash
 
                     //Password: req.body.password
                 })
