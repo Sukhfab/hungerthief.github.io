@@ -96,7 +96,7 @@ router.post("/submit-login", (req, res) => {
                         alter.splice(0, alter.length);
                         //alter=undefined;
                     res.render("login", {
-                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`,  name:name
+                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`,  loggeduser:name
                     });
                 }
                 }
