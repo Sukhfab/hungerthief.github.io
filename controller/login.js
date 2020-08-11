@@ -3,10 +3,13 @@ const router = express.Router();
 const userTable = require("../server.js")
 var bcrypt = require('bcryptjs');
 let alter=[];
+let name=[];
+//let alter;
 router.get("/login", (req, res) => {
     res.render("login", {
         head: "Login page",
-        alter:alter
+        alter:alter,
+        loggeduser:name
     });
 })
 
@@ -71,38 +74,43 @@ router.post("/submit-login", (req, res) => {
                         Email: req.body.email,
                         Password: req.body.password,
                         FirstName:company.FirstName,
-                        
+                        isClerk:company.isClerk
                     };
+                  if (req.session.user){
+                    name.push(req.session.user.FirstName);
+                  }
                     console.log(`${req.session.user.FirstName} is logged in`);
-                    if (req.session.user.Email==="ss9112000@gmail.com"){
+                    //if (req.session.user.Email==="ss9112000@gmail.com"){
+                        if (req.session.user.isClerk){
                         console.log("Data entry clerk is logged in");
                         alter.push("Alter");
+                        //alter="Alter";
                         res.render("login", {
                             confirmation: `Hello ${company.FirstName} (Data entry clerk), you are successfully logged in. You have access to change the meal information`,
-                            alter:alter 
+                            alter:alter ,
+                            loggeduser:name
                         });
                     }else{
+                     
                         //if the user is not clerk, then do not show Alter link on the navbar
-                        const index = alter.indexOf("Alter");
-                        if (index > -1) {
-                          alter.splice(index, 1);
-                        }
+                        alter.splice(0, alter.length);
+                        //alter=undefined;
                     res.render("login", {
-                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`, 
+                        confirmation: `Hello ${company.FirstName}, you are successfully logged in.`,  name:name
                     });
                 }
                 }
             })
     }
-    // mongo fetch
 })
 
 router.get("/logout", function (req, res) {
-    req.session.reset();
-    const index = alter.indexOf("Alter");
-    if (index > -1) {
-      alter.splice(index, 1);
-    }
+   req.session.reset();
+  // alter=undefined;
+    
+    alter.splice(0, alter.length);
+    name.splice(0, name.length);
+
     res.send(`<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -153,4 +161,4 @@ router.get("/logout", function (req, res) {
     </html>`)
 });
 
-module.exports = {router,alter};
+module.exports = {router,alter,name};

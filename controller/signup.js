@@ -3,6 +3,7 @@ const router = express.Router();
 const userTable = require("../server.js")
 const loginController= require("./login.js");
 let isalter =loginController.alter;
+let name=loginController.name;
 ////////////////////////
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(12);
@@ -13,7 +14,8 @@ router.get("/signup", (req, res) => {
 
     res.render("signup", {
         head: "Sign up page",
-        alter:isalter
+        alter:isalter,
+        loggeduser:name
 
     });
 })
@@ -125,7 +127,8 @@ router.post("/submit-signup", (req, res) => {
                     storedemail: storeemail,
                     storedpass: storepass,
                     storedconpass: storeconpass,
-                    alter:isalter
+                    alter:isalter,
+                    loggeduser:name
 
                 })
             } else {

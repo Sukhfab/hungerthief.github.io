@@ -14,8 +14,8 @@ const clientSessions = require("client-sessions");
 app.use(clientSessions({
   cookieName: "session", // this is the object name that will be added to 'req'
   secret: "week10example_web322", // this should be a long un-guessable string.
-  duration: 4 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
-  activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+  duration: 10 * 60 * 1000, // duration of the session in milliseconds (10 minutes)
+  activeDuration: 2000 * 60 // the session will be extended by this many ms each request (1 minute)
 }));
 
 // mangoDB
@@ -27,7 +27,8 @@ var hungerThiefUser = new Schema({
     "FirstName":  String, 
     "LastName": String,
     "Email": String,
-    "Password": String 
+    "Password": String ,
+    "isClerk":Boolean
   });
   var hungerThiefmeal = new Schema({
     "packagename":  String, 

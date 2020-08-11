@@ -144,7 +144,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-name">Name on card</label>
-                                <input type="text" class="form-control" id="cc-name" placeholder="" name="cname"
+                                <input type="text" class="form-control" id="cc-name" placeholder="Ex- Michelle Jackson" name="cname"
                                     required>
                                 <small class="text-muted">Full name as displayed on card</small>
                                 <div class="invalid-feedback">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="cc-number">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="" name="cnumber"
+                                <input type="text" class="form-control" id="cc-number" placeholder="1234 1234 1234 1234" name="cnumber"
                                     required>
                                 <div class="invalid-feedback">
                                     Field Can't be left empty.
@@ -164,7 +164,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">Expiration</label>
 
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="" name="cexpiry"
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" name="cexpiry"
                                     required>
                                 <div class="invalid-feedback">
                                     Field Can't be left empty.
@@ -172,7 +172,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="" name="cvv" required>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="123" name="cvv" required>
                                 <div class="invalid-feedback">
                                     Field Can't be left empty.
                                 </div>
@@ -197,6 +197,7 @@
                     <span class="badge badge-secondary badge-pill">{{totalquantity}}</span>
                 </h4>
                 <!-- Cart -->
+              <a href="/package"><span class="text-muted list-group mb-2 ">Add more meals</span></a> 
                 {{#each yo}}
                 <ul class="list-group mb-3 z-depth-1">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -218,11 +219,6 @@
                     </li>
                <input type="text" name="total" style="display: none;" value="{{grand}}" name="" id="">
                  <input type="text" name="packages" style="display: none;" value="{{nametotal}}" name="" id="">
-
-
-                <!-- Cart -->
-
-                <!-- Promo code --> 
 
             </div>
             <!--Grid column-->

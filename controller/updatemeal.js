@@ -3,11 +3,13 @@ const router = express.Router();
 const database = require("../server.js")
 const loginController= require("./login.js");
 let isalter =loginController.alter;
+let name=loginController.name;
 function ensureAuthorization(req, res, next) {
   if (!req.session.user) {
     res.redirect("/login");
   } else {
-    if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+   // if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+    if (!(req.session.user.isClerk)) {
       console.log(req.session.user.Email);
       console.log("You are not authorised");
       res.redirect("/authorization");
@@ -17,12 +19,12 @@ function ensureAuthorization(req, res, next) {
     }
   }
 }
-
 router.get("/updatemeal", ensureAuthorization, (req, res) => {
 
     res.render("updatemeal", {
       head: "Update page",
-      alter:isalter
+      alter:isalter,
+      loggeduser:name
 
     });
   })
@@ -39,7 +41,8 @@ router.get("/updatemeal", ensureAuthorization, (req, res) => {
           res.render("updatemeal", {
             head: "Update page",
             err: "The Meal is not found.",
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
   
@@ -55,7 +58,8 @@ router.get("/updatemeal", ensureAuthorization, (req, res) => {
             image: ele.image,
             istop: ele.istop,
             category: ele.category,
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
         }

@@ -3,11 +3,13 @@ const router = express.Router();
 const database = require("../server.js")
 const loginController= require("./login.js");
 let isalter =loginController.alter;
+let name=loginController.name;
 function ensureAuthorization(req, res, next) {
   if (!req.session.user) {
     res.redirect("/login");
   } else {
-    if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+   // if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+    if (!(req.session.user.isClerk)) {
       console.log(req.session.user.Email);
       console.log("You are not authorised");
       res.redirect("/authorization");
@@ -20,7 +22,8 @@ function ensureAuthorization(req, res, next) {
 router.get("/deletemeal", ensureAuthorization, (req, res) => {
     res.render("deletemeal", {
       head: "delete meal page",
-      alter:isalter
+      alter:isalter,
+      loggeduser:name
 
     });
   })
@@ -36,7 +39,8 @@ router.get("/deletemeal", ensureAuthorization, (req, res) => {
           res.render("deletemeal", {
             head: "Update page",
             err: "The Meal is not found.",
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
         } else {
@@ -54,7 +58,8 @@ router.get("/deletemeal", ensureAuthorization, (req, res) => {
           res.render("deletemeal", {
             head: "delete meal page",
             confirmation: `The "${meal.packagename}" meal has been deleted successfully.`,
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
         }

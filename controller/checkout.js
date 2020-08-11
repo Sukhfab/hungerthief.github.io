@@ -3,6 +3,7 @@ const router = express.Router();
 const database = require("../server.js")
 const loginController= require("./login.js");
 let isalter =loginController.alter;
+let name=loginController.name;
 function ensureLogin(req, res, next) {
   if (!req.session.user) {
     res.redirect("/login");
@@ -31,7 +32,8 @@ router.get("/mealdetail/:caption", (req, res) => {
             image: ele.image,
             istop: ele.istop,
             category: ele.category,
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
   
@@ -85,7 +87,8 @@ router.get("/mealdetail/:caption", (req, res) => {
             grand: grand(),
             nametotal: nametotal(),
             totalquantity: quatotal(),
-            alter:isalter
+            alter:isalter,
+            loggeduser:name
 
           });
   

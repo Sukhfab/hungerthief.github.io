@@ -3,8 +3,17 @@ const router = express.Router();
 const ServicesDB = require("../model/script1.js")
 const database = require("../server.js")
 const loginController= require("./login.js");
-let isalter =loginController.alter;
+let isalter =loginController.alter; 
+let name=loginController.name;
 
+// const ensuresName=(req,res,next)=>{
+//     if (req.session.user) {
+//     console.log(req.session.user);
+//     return req.session.user.FirstName;
+//     }
+//     else
+//     return "";
+// }
 router.get("/", (req, res) => {
     const fakeDB = new ServicesDB();
         database.mealsTable.find()
@@ -31,7 +40,8 @@ router.get("/", (req, res) => {
         top:y,
         services: fakeDB.getServices(),
         head: "Home page",
-        alter:isalter
+        alter:isalter,
+        loggeduser:name
     });
 }
 
@@ -41,7 +51,7 @@ router.get("/", (req, res) => {
 router.get("/package", (req, res) => {
     database.mealsTable.find()
         .exec()
-        .then((meal) => {
+        .then((meal) => { 
             if (meal) {
                 let x = meal;
                 let y = [];
@@ -60,7 +70,8 @@ router.get("/package", (req, res) => {
                 res.render("package", {
                     head: "Package page",
                     package: y,
-                    alter:isalter
+                    alter:isalter,
+                    loggeduser:name
                 });
             }
 

@@ -3,12 +3,13 @@ const router = express.Router();
 const database = require("../server.js");
 const loginController= require("./login.js");
 let isalter =loginController.alter;
-
+let name=loginController.name;
 function ensureAuthorization(req, res, next) {
   if (!req.session.user) {
     res.redirect("/login");
   } else {
-    if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+   // if (!((req.session.user.Email).localeCompare("ss9112000@gmail.com") == 0)) {
+    if (!(req.session.user.isClerk)) {
       console.log(req.session.user.Email);
       console.log("You are not authorised");
       res.redirect("/authorization");
@@ -20,7 +21,7 @@ function ensureAuthorization(req, res, next) {
 }
 
 router.get("/alter",ensureAuthorization,(req,res)=>{
-    res.render("alter",{alter:isalter
+    res.render("alter",{alter:isalter , loggeduser:name
     });
     
 })
@@ -29,7 +30,8 @@ router.get("/addmeal",ensureAuthorization, (req, res) => {
 
     res.render("addMeal", {
       head: "Add page",
-      alter:isalter
+      alter:isalter,
+      loggeduser:name
 
     });
   })
@@ -52,10 +54,10 @@ router.get("/addmeal",ensureAuthorization, (req, res) => {
         console.log("The meal was saved to the HungerThief");
       }
     });
-    res.render("AddMeal", {
+    res.render("addMeal", {
       head: "Add page",
       confirmation:`The "${req.body.name}"  meal has been added successfully.`,
-      alter:isalter
+      alter:isalter, loggeduser:name
 
 
     });
